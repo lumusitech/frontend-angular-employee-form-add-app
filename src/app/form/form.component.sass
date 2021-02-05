@@ -1,0 +1,59 @@
+.form
+  font-size: 1rem
+  display: grid
+  grid-template-columns: 1fr
+  padding: 1em
+  width: 50%
+  margin: 3em auto
+  background-color: rgba(0, 0, 0,.8)
+  box-shadow: 5px 5px 10px rgba(0, 0,0,.5)
+  border-radius: .5em
+  &__group
+    width: 100%
+    display: grid
+    //grid-template-areas: 'label input input input input input input' '. error error error error error error'
+    grid-template-columns: 1fr 3fr
+    grid-gap: 10px
+    &-label
+      //grid-area: label
+      & label
+        width: 100%
+        color: silver
+        font-size: 1.5em
+
+    &-input
+      //grid-area: input
+      width: 100%
+      & input
+        width: 100%
+        height: 2em
+        padding: 15px
+        border-radius: .5em
+        border: 2px solid lightblue
+        background: #FBF8EF
+        transition: all .2s
+        &:focus
+          outline: 0
+          box-shadow: 0 0 3px 3px lightblue
+    &-error
+      //grid-area: error
+      color: tomato
+      height: 2em
+      & p
+        font-size: 1.1em
+    &-select
+      font-size: 1.1em
+      width: 100%
+      & select
+        width: 100%
+        height: 2em
+        padding: 15px
+        border-radius: .5em
+        border: 2px solid lightblue
+        &:focus
+          outline: 0
+/**********************************************/
+input.ng-valid-ng-touched
+  border-color: 2px solid darkgreen
+input.ng-invalid-ng-touched
+  border-color: 2px solid tomato
