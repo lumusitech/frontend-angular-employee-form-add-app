@@ -1,13 +1,32 @@
-<form class="form">
+<form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
   <!-- ============================================== -->
   <div class="form__group">
     <div class="form__group-label">
       <label>Nombre</label>
     </div>
     <div class="form__group-input">
-      <input type="text" placeholder="Ingrese su nombre" />
+      <input
+        type="text"
+        placeholder="Ingrese su nombre"
+        formControlName="name"
+      />
+      <!-- Controls inputs errors -->
       <div class="form__group-error">
-        <p>El campo es requerido</p>
+        <p
+          *ngIf="
+            form.controls.name.errors?.required && form.controls.name.touched
+          "
+        >
+          El campo es requerido
+        </p>
+        <p
+          *ngIf="
+            form.controls.name.errors?.stringValidator &&
+            form.controls.name.touched
+          "
+        >
+          Se permiten solamente letras
+        </p>
       </div>
     </div>
   </div>
@@ -17,9 +36,28 @@
       <label>Apellido</label>
     </div>
     <div class="form__group-input">
-      <input type="text" placeholder="Ingrese su apellido" />
+      <input
+        type="text"
+        placeholder="Ingrese su apellido"
+        formControlName="lastname"
+      />
       <div class="form__group-error">
-        <p>El campo es requerido</p>
+        <p
+          *ngIf="
+            form.controls.lastname.errors?.required &&
+            form.controls.lastname.touched
+          "
+        >
+          El campo es requerido
+        </p>
+        <p
+          *ngIf="
+            form.controls.lastname.errors?.stringValidator &&
+            form.controls.lastname.touched
+          "
+        >
+          Se permiten solamente letras
+        </p>
       </div>
     </div>
   </div>
@@ -29,9 +67,28 @@
       <label>Email</label>
     </div>
     <div class="form__group-input">
-      <input type="text" placeholder="Ingrese su email" />
+      <input
+        type="text"
+        placeholder="Ingrese su email"
+        formControlName="email"
+      />
       <div class="form__group-error">
-        <p>El campo es requerido</p>
+        <p
+          *ngIf="
+            form.controls.email.errors?.required && form.controls.email.touched
+          "
+        >
+          El campo es requerido
+        </p>
+        <p
+          *ngIf="
+            form.controls.email.errors?.emailValidator &&
+            form.controls.email.touched &&
+            !form.controls.email.errors?.required
+          "
+        >
+          Formato de email incorrecto
+        </p>
       </div>
     </div>
   </div>
@@ -41,9 +98,24 @@
       <label>Edad</label>
     </div>
     <div class="form__group-input">
-      <input type="text" placeholder="Ingrese su edad" />
+      <input type="text" placeholder="Ingrese su edad" formControlName="age" />
       <div class="form__group-error">
-        <p>El campo es requerido</p>
+        <p
+          *ngIf="
+            form.controls.age.errors?.required && form.controls.age.touched
+          "
+        >
+          El campo es requerido
+        </p>
+        <p
+          *ngIf="
+            form.controls.age.errors?.ageValidator &&
+            form.controls.age.touched &&
+            !form.controls.age.errors?.required
+          "
+        >
+          Formato de edad incorrecto (1-129)
+        </p>
       </div>
     </div>
   </div>
@@ -53,37 +125,73 @@
       <label>Departamento</label>
     </div>
     <div class="form__group-select">
-      <select title="Seleccione su departamento">
+      <select title="Seleccione su departamento" formControlName="department">
         <option value="system">Informática</option>
         <option value="marketing">Marketing</option>
         <option value="contability">Contabilidad</option>
       </select>
       <div class="form__group-error">
-        <p>El campo es requerido</p>
+        <p
+          *ngIf="
+            form.controls.department.errors?.required &&
+            form.controls.department.touched
+          "
+        >
+          El campo es requerido
+        </p>
       </div>
     </div>
   </div>
+  <!-- ============================================== -->
   <div class="form__group">
     <div class="form__group-label">
       <label>Password</label>
     </div>
     <div class="form__group-input">
-      <input type="password" placeholder="Ingrese su password" />
+      <input
+        type="password"
+        placeholder="Ingrese su password"
+        formControlName="password"
+      />
       <div class="form__group-error">
-        <p>El campo es requerido</p>
+        <p
+          *ngIf="
+            form.controls.password.errors?.required &&
+            form.controls.password.touched
+          "
+        >
+          El campo es requerido
+        </p>
       </div>
     </div>
   </div>
+  <!-- ============================================== -->
   <div class="form__group">
     <div class="form__group-label">
       <label>Imagen</label>
     </div>
     <div class="form__group-input">
-      <input type="text" placeholder="Ingrese la dirección web de su imagen" />
+      <input
+        type="text"
+        placeholder="Ingrese la dirección web de su imagen"
+        formControlName="image"
+      />
       <div class="form__group-error">
-        <p>El campo es requerido</p>
+        <p
+          *ngIf="
+            form.controls.image.errors?.required && form.controls.image.touched
+          "
+        >
+          El campo es requerido
+        </p>
       </div>
     </div>
   </div>
   <!-- ============================================== -->
+  <div class="form__group">
+    <div class="form__group-label"></div>
+    <div class="form__group-button">
+      <input type="submit" value="enviar" [disabled]="!form.valid" />
+    </div>
+  </div>
 </form>

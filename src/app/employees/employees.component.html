@@ -1,3 +1,11 @@
-<div class="main">
-  <p>employees works!</p>
+<div class="container">
+  <div class="container__card" *ngFor="let e of employees">
+    <div class="container__card-image">
+      <img [src]="e.image" alt="Foto del empleado {{ e.lastname }} " />
+    </div>
+    <div class="container__card-info">
+      <p><b>Empleado: </b>{{ e.name }} {{ e.lastname }}</p>
+      <p><b>Edad: </b>{{ e.age }} años</p>
+    </div>
+  </div>
 </div>

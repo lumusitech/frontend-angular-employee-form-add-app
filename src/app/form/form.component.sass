@@ -3,19 +3,25 @@
   display: grid
   grid-template-columns: 1fr
   padding: 1em
-  width: 50%
-  margin: 3em auto
-  background-color: rgba(0, 0, 0,.8)
+  width: 80%
+  margin: 2em auto
+  background-color: #1f3a44cc
   box-shadow: 5px 5px 10px rgba(0, 0,0,.5)
   border-radius: .5em
+  position: relative
   &__group
     width: 100%
     display: grid
-    //grid-template-areas: 'label input input input input input input' '. error error error error error error'
-    grid-template-columns: 1fr 3fr
     grid-gap: 10px
+    //grid-template-areas: 'label input input input input input input' '. error error error error error error'
+    grid-template-columns: .8fr 3fr
+    @media (max-width: 900px)
+      grid-template-columns: 1.5fr 3fr
+    @media (max-width: 570px)
+      grid-template-columns: 1fr
     &-label
       //grid-area: label
+      @media (max-width: 569)
       & label
         width: 100%
         color: silver
@@ -34,7 +40,12 @@
         transition: all .2s
         &:focus
           outline: 0
-          box-shadow: 0 0 3px 3px lightblue
+          box-shadow: 0 0 8px 1px lightblue
+        &.ng-valid.ng-touched
+          box-shadow: 0 0 8px 1px green
+        &.ng-invalid.ng-touched
+          box-shadow: 0 0 8px 1px red
+
     &-error
       //grid-area: error
       color: tomato
@@ -46,14 +57,43 @@
       width: 100%
       & select
         width: 100%
-        height: 2em
-        padding: 15px
+        background: #FBF8EF
+        padding: .3em
         border-radius: .5em
         border: 2px solid lightblue
+
         &:focus
           outline: 0
+          box-shadow: 0 0 8px 1px lightblue
+        &.ng-valid.ng-touched
+          box-shadow: 0 0 8px 1px green
+        &.ng-invalid.ng-touched
+          box-shadow: 0 0 8px 1px red
+
+    &-button
+      width: 35%
+      margin: 0 auto
+      & input
+        border-radius: 10px
+        width: 100%
+        padding: .5em
+        background-color: #9e623a
+        color: #FBF8EF
+        font-size: 1.5em
+        border: none
+        outline: 0
+        transition: all .1s
+        text-transform: uppercase
+        &:active
+          outline: 0
+          width: 98%
+          margin-left: 2px
+          &:focus
+            outline: 0
+            &:hover
+              background-color: #b4612a
+              box-shadow: 0 0 5px 1px #927561
+        &:disabled
+          opacity: .5
+
 /**********************************************/
-input.ng-valid-ng-touched
-  border-color: 2px solid darkgreen
-input.ng-invalid-ng-touched
-  border-color: 2px solid tomato

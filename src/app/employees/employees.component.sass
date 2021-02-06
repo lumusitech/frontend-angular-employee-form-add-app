@@ -1,1 +1,25 @@
-.main
+.container
+  padding-top: 2em
+  display: grid
+  grid-template-columns: repeat(4,1fr)
+  width: 80%
+  margin: 0 auto
+  gap: 20px
+  padding-bottom: 4em
+  &__card
+    display: flex
+    flex-direction: column
+    flex-wrap: wrap
+    align-items: center
+    justify-content: center
+    width: 70%
+    border-radius: 10px
+    box-shadow: 2px 1px 5px 1px rgba(0,0,0,.5)
+    margin: 0 auto
+    &-image
+      width: 100%
+      & img
+        width: 100%
+        object-fit: cover
+    &-info
+      padding: .5em
