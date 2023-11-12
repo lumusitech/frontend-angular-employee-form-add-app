@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 
 import { EmployeeService } from '../employee.service';
 import { Employee } from '../models/employee.model';
@@ -11,33 +11,33 @@ import { Employee } from '../models/employee.model';
 })
 export class FormComponent implements OnInit {
 
-  form: FormGroup;
+  form: UntypedFormGroup;
 
   constructor(private employeeService: EmployeeService) {
-    this.form = new FormGroup({
-      name: new FormControl('', [
+    this.form = new UntypedFormGroup({
+      name: new UntypedFormControl('', [
         Validators.required,
         this.stringValidator
       ]),
-      lastname: new FormControl('', [
+      lastname: new UntypedFormControl('', [
         Validators.required,
         this.stringValidator
       ]),
-      email: new FormControl('', [
+      email: new UntypedFormControl('', [
         Validators.required,
         this.emailValidator
       ]),
-      age: new FormControl('', [
+      age: new UntypedFormControl('', [
         Validators.required,
         this.ageValidator
       ]),
-      department: new FormControl('', [
+      department: new UntypedFormControl('', [
         Validators.required
       ]),
-      password: new FormControl('', [
+      password: new UntypedFormControl('', [
         Validators.required
       ]),
-      image: new FormControl('', [
+      image: new UntypedFormControl('', [
         Validators.required
       ])
     });
@@ -59,48 +59,48 @@ export class FormComponent implements OnInit {
 
     this.employeeService.insert(employee);
 
-    this.form = new FormGroup({
-      name: new FormControl('', [
+    this.form = new UntypedFormGroup({
+      name: new UntypedFormControl('', [
         Validators.required,
         this.stringValidator
       ]),
-      lastname: new FormControl('', [
+      lastname: new UntypedFormControl('', [
         Validators.required,
         this.stringValidator
       ]),
-      email: new FormControl('', [
+      email: new UntypedFormControl('', [
         Validators.required,
         this.emailValidator
       ]),
-      age: new FormControl('', [
+      age: new UntypedFormControl('', [
         Validators.required,
         this.ageValidator
       ]),
-      department: new FormControl('', [
+      department: new UntypedFormControl('', [
         Validators.required
       ]),
-      password: new FormControl('', [
+      password: new UntypedFormControl('', [
         Validators.required
       ]),
-      image: new FormControl('', [
+      image: new UntypedFormControl('', [
         Validators.required
       ])
     });
   }
 
-  stringValidator(form: FormGroup): object | null {
+  stringValidator(form: UntypedFormGroup): object | null {
     let value = form.value;
     if (/^[a-zA-Z\s^/d]*$/.test(value)) return null;
     return { stringValidator: { error: 'it is allow only letters' } };
   }
 
-  emailValidator(form: FormGroup): object | null {
+  emailValidator(form: UntypedFormGroup): object | null {
     //if (/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(form.value)) return null;
     if (/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(form.value)) return null;
     return { emailValidator: { error: "Formato de email incorrecto" } };
   }
 
-  ageValidator(form: FormGroup): object | null {
+  ageValidator(form: UntypedFormGroup): object | null {
     if (/^[1-9]$|^[1-9][0-9]$|^1[0-2][0-9]$/.test(form.value)) return null;
     return { ageValidator: { error: 'invalid age format' } };
   }
