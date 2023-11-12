@@ -75,18 +75,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "employee-management:build"
+            "buildTarget": "employee-management:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "employee-management:build:production"
+              "buildTarget": "employee-management:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "employee-management:build"
+            "buildTarget": "employee-management:build"
           }
         },
         "test": {
